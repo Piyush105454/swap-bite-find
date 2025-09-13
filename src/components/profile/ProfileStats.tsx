@@ -36,7 +36,7 @@ const ProfileStats: React.FC<ProfileStatsProps> = ({ stats }) => {
       </div>
       <div className="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
         <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-          {stats.carbonEmissions} g
+          {stats.carbonEmissions} kg
         </div>
         <div className="text-sm text-gray-600 dark:text-gray-400">CO2 Saved</div>
       </div>
