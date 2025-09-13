@@ -7,12 +7,15 @@ import ProfileHeader from '@/components/profile/ProfileHeader';
 import ProfileTabs from '@/components/profile/ProfileTabs';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { Button } from '@/components/ui/button';
 
 const Profile = () => {
   const { user } = useAuth();
   const { isDetecting, detectAndSaveLocation } = useAutoLocationDetection();
 
   const [isEditing, setIsEditing] = useState(false);
+  const [carbonEmissions, setCarbonEmissions] = useState(0);
+  const [refresh, setRefresh] = useState(false);
 
   const [profileData, setProfileData] = useState({
     name: user?.name || 'Demo User',
@@ -88,6 +91,30 @@ const Profile = () => {
     fetchScore();
   }, [user?.id]);
 
+  useEffect(() => {
+    const fetchCarbonEmissions = async () => {
+      if (!user?.id) return;
+
+      try {
+        const { data, error } = await supabase
+          .from('food_items')
+          .select('carbon_emissions')
+          .eq('user_id', user.id);
+
+        if (error) throw error;
+
+        if (data) {
+          const totalEmissions = data.reduce((acc, item) => acc + (item.carbon_emissions || 0), 0);
+          setCarbonEmissions(totalEmissions);
+        }
+      } catch (error) {
+        console.error('Error fetching carbon emissions:', error);
+      }
+    };
+
+    fetchCarbonEmissions();
+  }, [user?.id, refresh]);
+
   // When detected location changes and is valid, update state and profile data
   useEffect(() => {
     const detectLocation = async () => {
@@ -141,7 +168,8 @@ const Profile = () => {
     itemsShared: 47,
     itemsReceived: 23,
     rating: 4.9,
-    joinDate: 'March 2024'
+    joinDate: 'March 2024',
+    carbonEmissions: carbonEmissions
   };
 
   const recentActivity = [
@@ -184,8 +212,12 @@ const Profile = () => {
             </div>
           </Card>
 
+          <div className="flex justify-end mb-4">
+            <Button onClick={() => setRefresh(!refresh)}>Refresh Stats</Button>
+          </div>
+
           {/* Tabs - Pass locationData + setters for editing and auto-save */}
-          <ProfileTabs 
+          <ProfileTabs
             recentActivity={recentActivity}
             profileData={profileData}
             setProfileData={setProfileData}

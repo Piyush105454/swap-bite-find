@@ -15,6 +15,9 @@ interface FoodItem {
   user_id: string;
   created_at: string;
   expire_date: Date | null;
+  quantity: number;
+  unit: string;
+  carbon_emissions: number;
   user: {
     full_name: string;
     avatar_url: string;
@@ -35,6 +38,9 @@ interface FoodCardItem {
   postedAt: string;
   likes: number;
   isLiked: boolean;
+  quantity: number;
+  unit: string;
+  carbon_emissions: number;
   user: {
     name: string;
     avatar: string;

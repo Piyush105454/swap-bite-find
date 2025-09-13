@@ -7,12 +7,15 @@ interface FoodItem {
   description: string;
   image_url: string;
   category: string;
+  quantity: number;
+  unit: string;
   location_lat: number;
   location_lng: number;
   location_address: string;
   user_id: string;
   created_at: string;
   expire_date: string | null;
+  carbon_emissions: number;
   user: {
     full_name: string;
     avatar_url: string;
@@ -29,6 +32,8 @@ export const convertToFoodCardFormat = (item: FoodItem) => {
     description: item.description,
     image: item.image_url || '/placeholder.svg',
     category: item.category,
+    quantity: item.quantity,
+    unit: item.unit,
     location: {
       lat: item.location_lat,
       lng: item.location_lng,
@@ -42,7 +47,8 @@ export const convertToFoodCardFormat = (item: FoodItem) => {
     postedAt: formatDistanceToNow(new Date(item.created_at), { addSuffix: true }),
     expireDate: item.expire_date, // Keep the full datetime string as stored in database
     likes: 0,
-    isLiked: false
+    isLiked: false,
+    carbon_emissions: item.carbon_emissions
   };
   
   console.log('Converted food item with expire_date:', converted.expireDate);

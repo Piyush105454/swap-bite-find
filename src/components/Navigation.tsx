@@ -39,14 +39,21 @@ export const Navigation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 group">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-orange-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">SE</span>
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-green-600 to-orange-600 bg-clip-text text-transparent">
-                SwapEat
-              </span>
-            </Link>
+               <Link to="/" className="flex items-center space-x-2 group">
+      {/* Logo */}
+      <div className="w-8 h-8">
+        <img
+          src="/swapeat.png"
+          alt="SwapEat Logo"
+          className="w-8 h-8 rounded-lg"
+        />
+      </div>
+
+      {/* Text */}
+      <span className="text-lg font-bold bg-gradient-to-r from-yellow-500 via-red-300 to-blue-200 bg-clip-text text-transparent">
+        SwapEat
+      </span>
+      </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
