@@ -7,6 +7,7 @@ import { Moon, Sun, Menu, MessageCircle, User, MapPin, X } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { AuthModal } from '@/components/AuthModal';
+import { Notifications } from '@/components/Notification';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -80,8 +81,18 @@ export const Navigation = () => {
                   >
                     <MessageCircle className="h-4 w-4" />
                     <span>Messages</span>
-                    <Badge className="bg-orange-500 text-white text-xs">3</Badge>
                   </Link>
+                  <Link
+                    to="/sent"
+                    className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
+                      location.pathname === '/sent'
+                        ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                        : 'text-gray-600 hover:text-green-600 dark:text-gray-300'
+                    }`}
+                  >
+                    <span>Sent Requests</span>
+                  </Link>
+                  <Notifications />
                   <Link 
                     to="/profile" 
                     className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
@@ -178,8 +189,19 @@ export const Navigation = () => {
                         >
                           <MessageCircle className="h-4 w-4 mr-2" />
                           Messages
-                          <Badge className="bg-orange-500 text-white text-xs ml-auto">3</Badge>
                         </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          to="/sent"
+                          className="flex items-center w-full px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                          onClick={closeMobileMenu}
+                        >
+                          <span>Sent Requests</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Notifications />
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
                         <Link 

@@ -97,7 +97,7 @@ export const RequestsManagement = () => {
       });
 
       setRequests(formattedRequests);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error loading requests:', error);
       toast.error('Failed to load requests');
     } finally {
@@ -123,8 +123,18 @@ export const RequestsManagement = () => {
         )
       );
 
+      if (status === 'accepted') {
+        const request = requests.find(r => r.id === requestId);
+        if (request) {
+          await supabase.from('notifications').insert({
+            user_id: request.requester.id,
+            message: `Your request for ${request.food_item.title} has been accepted.`,
+          });
+        }
+      }
+
       toast.success(`Request ${status} successfully`);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error updating request:', error);
       toast.error(`Failed to ${status.slice(0, -2)} request`);
     }
