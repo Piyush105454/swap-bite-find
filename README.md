@@ -1,73 +1,59 @@
-# Welcome to your Lovable project
+# Swap-Bite-Find: Food Waste Reduction Platform
 
-## Project info
+Swap-Bite-Find is a web application designed to combat food waste by connecting users with surplus food to those in need. It allows users to share and find food items, track their impact, and engage with a community dedicated to sustainability.
 
-**URL**: https://lovable.dev/projects/63e496ea-6cbb-4578-9a35-25efc2dc05eb
+## Features
 
-## How can I edit this code?
+- **Food Sharing:** Users can list surplus food items, including details like category, quantity, and expiry date.
+- **Interactive Map:** A map interface displays available food items, making it easy for users to find food nearby.
+- **Real-time Requests:** Users can request food items and manage incoming and outgoing requests in real-time.
+- **User Profiles:** Profiles showcase user activity, including items shared, requests made, and carbon footprint reduction.
+- **Gamification:** A leaderboard encourages friendly competition by ranking users based on their contributions.
+- **Notifications:** Users receive timely notifications about requests, messages, and expiring food items.
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **Frontend:** React, TypeScript, Vite
+- **UI:** Shadcn-UI, Tailwind CSS
+- **Backend:** Supabase (for database, authentication, and real-time features)
+- **Mapping:** Leaflet, Mapbox
+- **State Management:** React Query
+- **Form Handling:** React Hook Form, Zod
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/63e496ea-6cbb-4578-9a35-25efc2dc05eb) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+To get a local copy up and running, follow these simple steps.
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js and npm (or a compatible package manager)
+- A Supabase account and project
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. **Clone the repo:**
+   ```sh
+   git clone https://github.com/Piyush105454/swap-bite-find.git
+   ```
+2. **Navigate to the project directory:**
+   ```sh
+   cd swap-bite-find
+   ```
+3. **Install NPM packages:**
+   ```sh
+   npm install
+   ```
+4. **Set up your environment variables:**
+   - Create a `.env.local` file in the root of the project.
+   - Add your Supabase project URL and anon key:
+     ```
+     VITE_SUPABASE_URL=your-supabase-url
+     VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+     ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+5. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/63e496ea-6cbb-4578-9a35-25efc2dc05eb) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+The application will be available at `http://localhost:5173`.
